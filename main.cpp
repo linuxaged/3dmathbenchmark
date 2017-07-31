@@ -3,32 +3,44 @@
 #include "ovrmath/OVR_Math.h"
 #include "benchmark/benchmark.h"
 
-//int main(int argc, char const *argv[])
-//{
-//	/* code */
-//	ksMatrix4x4f ksMat;
-//	ksMatrix4x4f_CreateIdentity(&ksMat);
-//
-//	m3d::math::Matrix4x4 lxdMat;
-//
-//	OVR::Matrix4f ovrMat;
-//
-//	return 0;
-//}
-
-static void BM_StringCreation(benchmark::State& state) {
+static void VectorCreation_ks(benchmark::State& state )
+{
 	while (state.KeepRunning())
-		std::string empty_string;
+	{
+		ksVector3f vec;
+	}
 }
-// Register the function as a benchmark
-BENCHMARK(BM_StringCreation);
+BENCHMARK(VectorCreation_ks);
 
-// Define another benchmark
-static void BM_StringCopy(benchmark::State& state) {
-	std::string x = "hello";
-	while (state.KeepRunning())
-		std::string copy(x);
+static void MatrixCreation_ks(benchmark::State& state)
+{
+	while ( state.KeepRunning() )
+	{
+		ksMatrix4x4f mat;
+	}
 }
-BENCHMARK(BM_StringCopy);
+BENCHMARK(MatrixCreation_ks);
+
+static void MatrixMultiply_ks(benchmark::State& state)
+{
+	while ( state.KeepRunning() )
+	{
+		ksMatrix4x4f mat0{
+			1.0f, 0, 0, 0,
+			0, 1.0f, 0, 0,
+			0, 0, 1.0f, 0,
+			0, 0, 0, 1.0f
+		};
+		ksMatrix4x4f mat1{
+			0.987f, 0, 0.5f, 0,
+			0.32f, 0, 0.5f, 0,
+			0.15f, 0.1f, 0, 1.0f,
+			0, 1.0f, 0.78f, 0.4f
+		};
+		ksMatrix4x4f res;
+		ksMatrix4x4f_Multiply(&res, &mat0, &mat1 );
+	}
+}
+BENCHMARK(MatrixMultiply_ks);
 
 BENCHMARK_MAIN();
