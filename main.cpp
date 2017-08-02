@@ -76,7 +76,7 @@ BENCHMARK(MatrixMultiply_ks);
 //
 // lxdMath
 //
-static void VectorCreation_lxd(benchmark::State& state)
+static void VectorCreation_mj2(benchmark::State& state)
 {
 	std::vector<float> floats = GenRandomFloatArray();
 	while (state.KeepRunning())
@@ -85,9 +85,9 @@ static void VectorCreation_lxd(benchmark::State& state)
 	}
 	
 }
-BENCHMARK(VectorCreation_lxd);
+BENCHMARK(VectorCreation_mj2);
 
-static void MatrixCreation_lxd(benchmark::State& state)
+static void MatrixCreation_mj2(benchmark::State& state)
 {
 	std::vector<float> left = GenRandomFloatArray();
 	while (state.KeepRunning())
@@ -98,9 +98,9 @@ static void MatrixCreation_lxd(benchmark::State& state)
 	}
 	
 }
-BENCHMARK(MatrixCreation_lxd);
+BENCHMARK(MatrixCreation_mj2);
 
-static void MatrixMultiply_lxd(benchmark::State& state)
+static void MatrixMultiply_mj2(benchmark::State& state)
 {
 	std::vector<float> left = GenRandomFloatArray();
 	std::vector<float> right = GenRandomFloatArray();
@@ -112,7 +112,7 @@ static void MatrixMultiply_lxd(benchmark::State& state)
 		res = mat0 * mat1;
 	}
 }
-BENCHMARK(MatrixMultiply_lxd);
+BENCHMARK(MatrixMultiply_mj2);
 
 //
 // OVR math
