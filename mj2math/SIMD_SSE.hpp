@@ -2,8 +2,7 @@
 
 #include <emmintrin.h> // SSE2
 
-namespace m3d {
-namespace math {
+namespace mj2 {
     using VectorSIMD = __m128;
 
     inline VectorSIMD MakeVectorSIMD(float fX, float fY, float fZ, float fW)
@@ -86,5 +85,4 @@ namespace math {
     {
         *((VectorSIMD*)resultSIMD) = VectorQuaternionMultiply2(*((const VectorSIMD*)quat0), *((const VectorSIMD*)quat1));
     }
-}
-}
+} // end of namespace mj2

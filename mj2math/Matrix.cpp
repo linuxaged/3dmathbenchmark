@@ -1,8 +1,8 @@
 #include "Matrix.hpp"
 
-namespace m3d
-{
-    namespace math
+//namespace m3d
+//{
+    namespace mj2
     {
         //-------------------------------------------------------------
         // Vector3
@@ -56,4 +56,4 @@ namespace m3d
                 );
         }
     }
-}
+//}

@@ -1,5 +1,5 @@
 #include "ksmath/ksmath.hpp"
-#include "lxdmath/Matrix.hpp"
+#include "mj2math/Matrix.hpp"
 #include "ovrmath/OVR_Math.h"
 #include "benchmark/benchmark.h"
 #include <random>
@@ -81,7 +81,7 @@ static void VectorCreation_lxd(benchmark::State& state)
 	std::vector<float> floats = GenRandomFloatArray();
 	while (state.KeepRunning())
 	{
-		m3d::math::Vector3 vec{ floats[0], floats[1], floats[2] };
+		mj2::Vector3 vec{ floats[0], floats[1], floats[2] };
 	}
 	
 }
@@ -92,7 +92,7 @@ static void MatrixCreation_lxd(benchmark::State& state)
 	std::vector<float> left = GenRandomFloatArray();
 	while (state.KeepRunning())
 	{
-		m3d::math::Matrix4x4 mat {
+		mj2::Matrix4x4 mat {
 				left.data()
 			};
 	}
@@ -106,9 +106,9 @@ static void MatrixMultiply_lxd(benchmark::State& state)
 	std::vector<float> right = GenRandomFloatArray();
 	while (state.KeepRunning())
 	{
-		m3d::math::Matrix4x4 mat0 { left.data() };
-		m3d::math::Matrix4x4 mat1 { right.data() };
-		m3d::math::Matrix4x4 res;
+		mj2::Matrix4x4 mat0 { left.data() };
+		mj2::Matrix4x4 mat1 { right.data() };
+		mj2::Matrix4x4 res;
 		res = mat0 * mat1;
 	}
 }

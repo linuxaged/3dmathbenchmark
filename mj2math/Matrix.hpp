@@ -13,8 +13,7 @@
 
 #define USE_SIMD 1
 
-namespace m3d {
-namespace math {
+namespace mj2 {
 
     struct Vector2 {
     public:
@@ -643,5 +642,4 @@ namespace math {
         return result;
     }
 
-} // namespace math
-} // namespace m3d
+} // namespace mj2

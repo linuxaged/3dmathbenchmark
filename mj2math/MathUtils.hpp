@@ -2,8 +2,7 @@
 
 #include <cmath>
 
-namespace m3d {
-namespace math {
+namespace mj2 {
 	const float  PI_F = 3.14159265358979f;
 
     static inline float InvSqrt(float f)
@@ -25,5 +24,4 @@ namespace math {
     {
         return (x - fromRange.min) * toRange.length() / fromRange.length() + toRange.min;
     }
-}
-}
+} // end of namespace mj2

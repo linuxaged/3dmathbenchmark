@@ -7,8 +7,7 @@
 
 #include <arm_neon.h>
 
-namespace m3d {
-namespace math {
+namespace mj2 {
     using VectorSIMD = float32x4_t __attribute((aligned(16)));
 
     inline VectorSIMD MakeVectorSIMD(float fX, float fY, float fZ, float fW)
@@ -116,5 +115,4 @@ namespace math {
     {
         *((VectorSIMD*)resultSIMD) = QuaternionMultiply2(*((const VectorSIMD*)quat0), *((const VectorSIMD*)quat1));
     }
-}
-}
+} // end of namespace mj2
