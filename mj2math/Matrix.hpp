@@ -169,7 +169,7 @@ namespace mj2 {
 
         inline void Normalize();
 
-        void print();
+        void Print();
         void ToString(char* const str, size_t size);
     };
 
@@ -365,7 +365,7 @@ namespace mj2 {
         static inline Matrix4x4 RotationY(float angleInRad);
         static inline Matrix4x4 RotationZ(float angleInRad);
 
-        void print();
+        void Print();
         void ToString(char* const str, size_t size);
     };
 
