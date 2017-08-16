@@ -2,12 +2,18 @@
 
 #include <cmath>
 
+// SIMD
+#if defined( __arm__ ) || defined( __aarch64__ )
+#include "SIMD_NEON.hpp"
+#else
+#include "SIMD_SSE.hpp"
+#endif
+
 namespace mj2 {
 	const float  PI_F = 3.14159265358979f;
 
     static inline float InvSqrt(float f)
     {
-        // TODO: quake 3, neon
         return std::sqrt(1.0f / f);
     }
 

@@ -4,12 +4,6 @@
 #include <cstring>
 
 #include "MathUtils.hpp"
-// SIMD
-#if defined __arm__
-#include "SIMD_NEON.hpp"
-#else
-#include "SIMD_SSE.hpp"
-#endif
 
 #define USE_SIMD 1
 
@@ -312,10 +306,10 @@ namespace mj2 {
 
     inline void Vector3::Normalize()
     {
-        float length = sqrt(x * x + y * y + z * z);
-        x /= length;
-        y /= length;
-        z /= length;
+        float InvertLength = InvSqrt(x * x + y * y + z * z);
+        x *= InvertLength;
+        y *= InvertLength;
+        z *= InvertLength;
     }
 
     typedef struct Vector4 {
