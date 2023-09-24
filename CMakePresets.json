@@ -1,0 +1,112 @@
+{
+    "version": 4,
+    "configurePresets": [
+        {
+            "name": "windows-clang",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "installDir": "${sourceDir}/out/install/${presetName}",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "clang-cl",
+                "CMAKE_CXX_COMPILER": "clang-cl",
+                "CMAKE_TOOLCHAIN_FILE": {
+                    "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+                    "type": "FILEPATH"
+                }
+            },
+            "vendor": {
+                "microsoft.com/VisualStudioSettings/CMake/1.0": {
+                    "intelliSenseMode": "windows-clang-x64"
+                }
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        },
+        {
+            "name": "clang-debug",
+            "displayName": "clang Debug",
+            "inherits": "windows-clang",
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_C_FLAGS_INIT": "/clang:-finline-functions /clang:-fopenmp=libomp /openmp:experimental",
+                "CMAKE_CXX_FLAGS_INIT": "/clang:-finline-functions /clang:-fopenmp=libomp /openmp:experimental"
+            }
+        },
+        {
+            "name": "clang-RelWithDebInfo",
+            "displayName": "clang RelWithDebInfo",
+            "inherits": "windows-clang",
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+                "CMAKE_C_FLAGS_INIT": "/clang:-finline-functions /clang:-fopenmp=libomp /openmp:experimental",
+                "CMAKE_CXX_FLAGS_INIT": "/clang:-finline-functions /clang:-fopenmp=libomp /openmp:experimental"
+            }
+        },
+        {
+            "name": "windows-msvc",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "installDir": "${sourceDir}/out/install/${presetName}",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "cl",
+                "CMAKE_CXX_COMPILER": "cl",
+                "CMAKE_TOOLCHAIN_FILE": {
+                    "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+                    "type": "FILEPATH"
+                }
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        },
+        {
+            "name": "msvc-Debug",
+            "displayName": "msvc Debug",
+            "inherits": "windows-msvc",
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_C_FLAGS_INIT": "/MP /openmp:experimental",
+                "CMAKE_CXX_FLAGS_INIT": "/MP /openmp:experimental",
+                "CMAKE_EXE_LINKER_FLAGS": "/INCREMENTAL /PDBCOMPRESS",
+                "CMAKE_SHARED_LINKER_FLAGS": "/INCREMENTAL /PDBCOMPRESS",
+                "CMAKE_MODULE_LINKER_FLAGS": "/INCREMENTAL /PDBCOMPRESS"
+            }
+        },
+        {
+            "name": "msvc-RelWithDebInfo",
+            "displayName": "msvc RelWithDebInfo",
+            "inherits": "windows-msvc",
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+                "CMAKE_C_FLAGS_INIT": "/MP /openmp:experimental /O2 /GT /GS- /GL /Zi",
+                "CMAKE_CXX_FLAGS_INIT": "/MP /openmp:experimental /O2 /GT /GS- /GL /Zi",
+                "CMAKE_EXE_LINKER_FLAGS": "/LTCG /INCREMENTAL:NO /OPT:ICF,REF /PDBCOMPRESS",
+                "CMAKE_SHARED_LINKER_FLAGS": "/LTCG /INCREMENTAL:NO /OPT:ICF,REF /PDBCOMPRESS",
+                "CMAKE_MODULE_LINKER_FLAGS": "/LTCG /INCREMENTAL:NO /OPT:ICF,REF /PDBCOMPRESS"
+            }
+        }
+    ]
+}
